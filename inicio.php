@@ -12,7 +12,10 @@
 		<section>
 			<ul>
 				<?php
-					$myfile = fopen("webdictionary.txt", "r") or die("Unable to open file!");
+					$StringBirth;
+					$PresentDay;
+					$myfile = fopen("Usuarios.txt", "r") or die("Unable to open file!");
+					fgets($myfile);
 					while(!feof($myfile)){
 						echo '<li class="USUARIO">';
 
@@ -31,8 +34,19 @@
 									echo '</li><li>';
 
 
-									echo fgets($myfile);
+									$StringBirth=fgets($myfile);
+									$PresentDay=date("d/m/Y");
+									$dif = (int)substr($PresentDay,6)-(int)substr($StringBirth,6);
+									if ((int)substr($PresentDay,3,2)>=(int)substr($StringBirth,3,2)){
+										if (!(int)substr($PresentDay,1,2)>=(int)substr($StringBirth,1,2))
+											$dif-=1;
+									}else
+										$dif-=1;
 
+									echo $dif ;
+
+							fgets($myfile);
+							fgets($myfile);
 
 						echo'</li></ul></li>';
 					}
