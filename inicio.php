@@ -29,6 +29,7 @@
 
 
 									echo fgets($myfile);
+									fgets($myfile);//saltar correo
 
 
 									echo '</li><li>';
@@ -45,8 +46,9 @@
 
 									echo $dif ;
 
-							fgets($myfile);
-							fgets($myfile);
+							fgets($myfile);//saltar partidas jugadas
+							fgets($myfile);//saltar partidas ganadas
+							fgets($myfile);//saltar linea
 
 						echo'</li></ul></li>';
 					}
