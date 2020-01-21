@@ -36,10 +36,10 @@
 
 
 									$StringBirth=fgets($myfile);
-									$PresentDay=date("d/m/Y");
-									$dif = (int)substr($PresentDay,6)-(int)substr($StringBirth,6);
-									if ((int)substr($PresentDay,3,2)>=(int)substr($StringBirth,3,2)){
-										if (!(int)substr($PresentDay,1,2)>=(int)substr($StringBirth,1,2))
+									$PresentDay=date("Y-m-d");
+									$dif = (int)substr($PresentDay,0,4)-(int)substr($StringBirth,0,4);
+									if ((int)substr($PresentDay,5,2)>=(int)substr($StringBirth,5,2)){
+										if (!(int)substr($PresentDay,8)>=(int)substr($StringBirth,8))
 											$dif-=1;
 									}else
 										$dif-=1;
