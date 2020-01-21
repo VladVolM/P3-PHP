@@ -10,6 +10,9 @@
     </head>
     <body>
 		<section>
+			<a href="form.php">FORMULARIO</a>
+		</section>
+		<section>
 			<ul>
 				<?php
 					$StringBirth;

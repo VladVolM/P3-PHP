@@ -1,3 +1,15 @@
+<?php
+			if (isset($_POST["Comprobar"])){
+				if (strlen($_POST["Apellidos"])>=2)
+					if (strlen($_POST["Apellidos"])>=2)
+						if(filter_var($_POST["Correo"],FILTER_VALIDATE_EMAIL))
+							if (strlen($_POST["Fecha"])>=1){
+								$Contenido= "----------------------------------------\n".$_POST["Nombre"]."\n".$_POST["Apellidos"]."\n".$_POST["Correo"]."\n".$_POST["Fecha"]."\n0\n0\n";
+								file_put_contents("Usuarios.txt", $Contenido,FILE_APPEND);
+								header('Location: inicio.php');
+							}
+			}
+?>
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -9,22 +21,9 @@
         <script type="text/javascript" src="Scripts/javaInicio.js"></script>
     </head>
     <body>
-		<?php
-			if (isset($_POST["Comprobar"])){
-				if (strlen($_POST["Apellidos"])>=2)
-					if (strlen($_POST["Apellidos"])>=2)
-						if(filter_var($_POST["Correo"],FILTER_VALIDATE_EMAIL))
-							if (strlen($_POST["Fecha"])>=1){
-								$Contenido= "----------------------------------------\n".$_POST["Nombre"]."\n".$_POST["Apellidos"]."\n".$_POST["Correo"]."\n".$_POST["Fecha"]."\n0\n0\n";
-								file_put_contents("Usuarios.txt", $Contenido,FILE_APPEND);
-							}
-				
-
-
-
-
-			}
-		?>
+		<section>
+			<a href="inicio.php">Volver al inicio</a>
+		</section>
 		<form id='alta' method="post" onsubmit="return true;">
 			<fieldset>
 				<legend>CREAR USUARIO</legend>
