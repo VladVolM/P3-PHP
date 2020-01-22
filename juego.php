@@ -3,7 +3,7 @@
 		$_POST["Vida"]=5;
 		session_start();
 		$palabraelegida="abcde";
-		$palabrablank="_____"
+		$palabrablank="_____";
 
 		$_SESSION["PALABRA"]=$palabraelegida;
 		$_SESSION["BLANK"]=$palabrablank;
@@ -30,13 +30,13 @@
 					<?php
 						$myfile = fopen("Ahorcado.txt", "r") or die("Unable to open file!");
 						
-						for($i=0;$i<(5-$_POST["Vida"])*7;$i++)
+						for($i=0;$i<(5-(int)$_POST["Vida"])*7;$i++)
 							fgets($myfile); //saltar dibujos si es nesesario
 						for($i=0;$i<7;$i++)
 							echo fgets($myfile); //7 lineas del dibujo
 					?>
 				</label>
-				<br><label id="palabra"class="datos">_ _ _ _ _</label>
+				<br><label id="palabra"class="datos"></label>
 				<br><br><label class="datos" for="Letra" >Letra:</label>
 				<select name="Letra">
 					<?php
@@ -45,12 +45,12 @@
 					?>
   				</select>
 
-				<br><input id="lives" class="hide" type="text" name="Vida">
+				<br><input id="lives" class="hide" type="number" name="Vida">
 				<input class="hide" type="radio" name="Comprobar" checked>
 				<?php
 					if (!isset($_POST["Comprobar"]))
-						setblank();
-					$_POST["Vida"]=$_POST["Vida"]-1;
+						echo '<script>setblank();</script>';
+					$_POST["Vida"]=(int)$_POST["Vida"]-1;
 				?>
 				<br><button type="submit">Enviar</button>
 			</fieldset>
