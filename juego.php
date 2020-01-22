@@ -1,6 +1,12 @@
 <?php
-	if (!isset($_POST["Vida"])){
+	if (!isset($_POST["Comprobar"])){
 		$_POST["Vida"]=5;
+		session_start();
+		$palabraelegida="abcde";
+		$palabrablank="_____"
+
+		$_SESSION["PALABRA"]=$palabraelegida;
+		$_SESSION["BLANK"]=$palabrablank;
 	}
 ?>
 <!DOCTYPE html>
@@ -14,7 +20,10 @@
         <script type="text/javascript" src="Scripts/javaInicio.js"></script>
     </head>
     <body>
-		<form id='juego' method="post" onsubmit="return true;">
+		<section>
+			<a href="inicio.php">Salir</a>
+		</section>
+		<form id='juego' method="post" onsubmit="return comprobar();">
 			<fieldset>
 				<legend>Juego del Ahorcado</legend>
 				<label id="dibujo"class="datos">
@@ -36,7 +45,13 @@
 					?>
   				</select>
 
-				<br><label class="hide" for="Vida">Vida/s:</label><input id="lives" class="hide" type="text" name="Vida">5</input>
+				<br><input id="lives" class="hide" type="text" name="Vida">
+				<input class="hide" type="radio" name="Comprobar" checked>
+				<?php
+					if (!isset($_POST["Comprobar"]))
+						setblank();
+					$_POST["Vida"]=$_POST["Vida"]-1;
+				?>
 				<br><button type="submit">Enviar</button>
 			</fieldset>
 		</form>

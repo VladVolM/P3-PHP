@@ -10,7 +10,7 @@
     </head>
     <body>
 		<section>
-			<a href="form.php">Registrarse como jugador</a>
+			<a href="inicio.php">Volver</a>
 		</section>
 		<section>
 			<ul>
@@ -24,34 +24,26 @@
 
 							$nombre=fgets($myfile);//conseguir nombre
 							$apellidos=fgets($myfile);//conseguir apppelidos
-							echo '<a href="juego.php?nom='.$nombre.'&ape='.$apellidos.'">';
 
-							echo $nombre;//ver nombre
-
-
-								echo '</a><ul><li>';
+							echo $nombre.' '.$apellidos;//ver nombre
 
 
-									echo $apellidos; //ver apellidos
+								echo '<ul><li>';
+
 									fgets($myfile);//saltar correo
-
+									fgets($myfile);//saltar fecha
+									$partidasjugadas=fgets($myfile);//guardar partidas jugadas
+									echo 'Partidas jugadas: '.$partidasjugadas;//partidas jugadas
 
 									echo '</li><li>';
 
+									$partidasganadas=fgets($myfile);//guardar partidas ganadas
+									echo 'Partidas ganadas: '.$partidasganadas;//partidas ganadas
 
-									$StringBirth=fgets($myfile);//guardar fecha
-									$PresentDay=date("Y-m-d");
-									$dif = (int)substr($PresentDay,0,4)-(int)substr($StringBirth,0,4);
-									if ((int)substr($PresentDay,5,2)>=(int)substr($StringBirth,5,2)){
-										if (!(int)substr($PresentDay,8)>=(int)substr($StringBirth,8))
-											$dif-=1;
-									}else
-										$dif-=1;
+									echo '</li><li>';
 
-									echo $dif ;//poner edad
-
-							fgets($myfile);//saltar partidas jugadas
-							fgets($myfile);//saltar partidas ganadas
+									echo 'Partidas perdidas: '.((int)$partidasjugadas-(int)$partidasganadas);//partidas perdidas
+							
 							fgets($myfile);//saltar linea
 
 						echo'</li></ul></li>';
@@ -60,8 +52,5 @@
 				?>
 			</ul>
         </section>
-		<section>
-			<a href="score.php">Puntos</a>
-		</section>
     </body>
 </html>
