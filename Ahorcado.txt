@@ -5,38 +5,38 @@
 <br>
 <br>
 __________<br>
- _____<br>
-/    |<br>
+&nbsp_____<br>
+/&nbsp&nbsp&nbsp&nbsp|<br>
 |<br>
 |<br>
 |<br>
 |<br>
 |_________<br>
- _____<br>
-/    |<br>
-|    O<br>
+&nbsp_____<br>
+/&nbsp&nbsp&nbsp&nbsp|<br>
+|&nbsp&nbsp&nbsp&nbspO<br>
 |<br>
 |<br>
 |<br>
 |_________<br>
- _____
-/    |<br>
-|    O<br>
-|    |<br>
-|    |<br>
+&nbsp_____<br>
+/&nbsp&nbsp&nbsp&nbsp|<br>
+|&nbsp&nbsp&nbsp&nbspO<br>
+|&nbsp&nbsp&nbsp&nbsp|<br>
+|&nbsp&nbsp&nbsp&nbsp|<br>
 |<br>
 |_________<br>
- _____<br>
-/    |<br>
-|    O<br>
-|   /|\<br>
-|    |<br>
+&nbsp_____<br>
+/&nbsp&nbsp&nbsp&nbsp|<br>
+|&nbsp&nbsp&nbsp&nbspO<br>
+|&nbsp&nbsp&nbsp/|\<br>
+|&nbsp&nbsp&nbsp&nbsp|<br>
 |<br>
 |_________<br>
- _____<br>
-/    |<br>
-|    O<br>
-|   /|\<br>
-|    |<br>
-|   / \<br>
+&nbsp_____<br>
+/&nbsp&nbsp&nbsp&nbsp|<br>
+|&nbsp&nbsp&nbsp&nbspO<br>
+|&nbsp&nbsp&nbsp/|\<br>
+|&nbsp&nbsp&nbsp&nbsp|<br>
+|&nbsp&nbsp&nbsp/&nbsp\<br>
 |_________<br>

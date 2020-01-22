@@ -31,9 +31,8 @@
 				<br><br><label class="datos" for="Letra" >Letra:</label>
 				<select name="Letra">
 					<?php
-						for($i=97;$i<123;$i++){
+						for($i=97;$i<123;$i++)
 							echo '<option value="'.chr($i).'">'.chr($i).'</option>';
-					
 					?>
   				</select>
 
@@ -41,5 +40,5 @@
 				<br><button type="submit">Enviar</button>
 			</fieldset>
 		</form>
-</body>
+	</body>
 </html>
