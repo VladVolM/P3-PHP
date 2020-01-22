@@ -18,20 +18,21 @@
 					$StringBirth;
 					$PresentDay;
 					$myfile = fopen("Usuarios.txt", "r") or die("Unable to open file!");
-					fgets($myfile);
+					fgets($myfile);//saltar separador
 					while(!feof($myfile)){
 						echo '<li class="USUARIO">';
 
+							$nombre=fgets($myfile);//conseguir nombre
+							$apellidos=fgets($myfile);//conseguir apppelidos
+							echo '<a href="juego.php?nom='.$nombre.'&ape='.$apellidos.'">';
 
-							echo '<a href="#">';
-
-							echo fgets($myfile);
+							echo $nombre;//ver nombre
 
 
 								echo '</a><ul><li>';
 
 
-									echo fgets($myfile);
+									echo $apellidos; //ver apellidos
 									fgets($myfile);//saltar correo
 
 
@@ -47,7 +48,7 @@
 									}else
 										$dif-=1;
 
-									echo $dif ;
+									echo $dif ;//poner edad
 
 							fgets($myfile);//saltar partidas jugadas
 							fgets($myfile);//saltar partidas ganadas

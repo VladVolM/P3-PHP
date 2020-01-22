@@ -61,7 +61,7 @@
 							echo '*No se puede dajar vacio';
 				?>
 				</br><button type="submit">Enviar</button>
-				<input type="radio" name="Comprobar" checked>
+				<input class="hide" type="radio" name="Comprobar" checked>
 			</fieldset>
 		</form>
 </body>
