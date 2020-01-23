@@ -8,6 +8,11 @@
 		$_SESSION["PALABRA"]=$palabraelegida;
 		$_SESSION["BLANK"]=$palabrablank;
 	}
+
+
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -23,7 +28,7 @@
 		<section>
 			<a href="inicio.php">Salir</a>
 		</section>
-		<form id='juego' method="post" onsubmit="return comprobar();">
+		<form id='juego' method="post" onsubmit="return true;">
 			<fieldset>
 				<legend>Juego del Ahorcado</legend>
 				<label id="dibujo"class="datos">
@@ -36,7 +41,33 @@
 							echo fgets($myfile); //7 lineas del dibujo
 					?>
 				</label>
-				<br><label id="palabra"class="datos"></label>
+				<br><label id="palabra"class="datos">
+					<?php
+						if (!isset($_POST["Comprobar"]))
+							echo $_SESSION["BLANK"];
+						else{
+							$p=str_split($_SESSION["PALABRA"]);
+							$b=str_split($_SESSION["BLANK"]);
+							echo $_SESSION["BLANK"];
+							print_r($b);
+							$encontrado=false;
+							$pos = strrpos($_SESSION["PALABRA"], $_POST["Letra"]);
+							if ($pos === false)
+								$_POST["Vida"]=((int)$_POST["Vida"]-1);
+							else{
+								$max=$_SESSION["BLANK"].length;
+								for ($i=0;$i<$max;$i++){
+									if ($p[$i]==$_POST["Letra"])
+										if ($b[$i]!=$_POST["Letra"])
+											$b[$i]=$_POST["Letra"];
+								}
+								$_SESSION["BLANK"]=implode($b);
+							}
+							echo $_SESSION["BLANK"];
+						}
+
+					?>
+				</label>
 				<br><br><label class="datos" for="Letra" >Letra:</label>
 				<select name="Letra">
 					<?php
@@ -45,13 +76,8 @@
 					?>
   				</select>
 
-				<br><input id="lives" class="hide" type="number" name="Vida">
+				<br><input id="lives" class="hide" type="number" name="Vida" <?php echo 'value='.((int)$_POST["Vida"]);?>>
 				<input class="hide" type="radio" name="Comprobar" checked>
-				<?php
-					if (!isset($_POST["Comprobar"]))
-						echo '<script>setblank();</script>';
-					$_POST["Vida"]=(int)$_POST["Vida"]-1;
-				?>
 				<br><button type="submit">Enviar</button>
 			</fieldset>
 		</form>
