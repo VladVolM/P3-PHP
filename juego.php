@@ -1,18 +1,14 @@
 <?php
+session_start();
 	if (!isset($_POST["Comprobar"])){
 		$_POST["Vida"]=5;
-		session_start();
+
 		$palabraelegida="abcde";
 		$palabrablank="_____";
 
 		$_SESSION["PALABRA"]=$palabraelegida;
 		$_SESSION["BLANK"]=$palabrablank;
 	}
-
-
-
-
-
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -46,30 +42,30 @@
 						if (!isset($_POST["Comprobar"]))
 							echo $_SESSION["BLANK"];
 						else{
-							$p=str_split($_SESSION["PALABRA"]);
-							$b=str_split($_SESSION["BLANK"]);
-							echo $_SESSION["BLANK"];
-							print_r($b);
-							$encontrado=false;
 							$pos = strrpos($_SESSION["PALABRA"], $_POST["Letra"]);
 							if ($pos === false)
 								$_POST["Vida"]=((int)$_POST["Vida"]-1);
 							else{
-								$max=$_SESSION["BLANK"].length;
+								$encontrado=false;
+								$max=strlen($_SESSION["PALABRA"]);
 								for ($i=0;$i<$max;$i++){
-									if ($p[$i]==$_POST["Letra"])
-										if ($b[$i]!=$_POST["Letra"])
-											$b[$i]=$_POST["Letra"];
+									if ($_SESSION["PALABRA"][$i]==$_POST["Letra"]){
+										if ($_SESSION["BLANK"][$i]!=$_POST["Letra"])
+											$_SESSION["BLANK"][$i]=$_POST["Letra"];
+										else
+											$encontrado=true;
+									}
 								}
-								$_SESSION["BLANK"]=implode($b);
+								if ($encontrado)
+									$_POST["Vida"]=((int)$_POST["Vida"]-1);
 							}
 							echo $_SESSION["BLANK"];
 						}
 
 					?>
 				</label>
-				<br><br><label class="datos" for="Letra" >Letra:</label>
-				<select name="Letra">
+				<br><br><label class="datos" >Letra:</label>
+				<select class="datos" name="Letra">
 					<?php
 						for($i=97;$i<123;$i++)
 							echo '<option value="'.chr($i).'">'.chr($i).'</option>';
@@ -77,7 +73,7 @@
   				</select>
 
 				<br><input id="lives" class="hide" type="number" name="Vida" <?php echo 'value='.((int)$_POST["Vida"]);?>>
-				<input class="hide" type="radio" name="Comprobar" checked>
+				<input class="hide" type="radio" name="Comprobar" checked><?php echo $_POST["Letra"];?>
 				<br><button type="submit">Enviar</button>
 			</fieldset>
 		</form>
