@@ -1,11 +1,10 @@
 <?php
 session_start();
 	if (!isset($_POST["Comprobar"])){
-		$_POST["Vida"]=5;
+		$_POST["Vida"]=5;//PONE VIDA BASE
 
 		$myfile = fopen("Usuarios.txt", "r") or die("Unable to open file!");
-		$linea=0;
-		$texto="";
+		$texto="";//TEXTO QUE SE GUARDA CON UNA PARTIDA MAS EN EL USUARIO
 		$texto.=fgets($myfile);//saltar primer separador
 		while(!feof($myfile)){
 			$nombre=fgets($myfile);//conseguir nombre
@@ -14,7 +13,6 @@ session_start();
 			$texto.=$apellidos;
 			if ($_GET["nom"]== trim($nombre)){
 				$_SESSION["Nombre"]=$nombre;
-				$_SESSION["Linea"]=$linea;
 				$texto.=fgets($myfile);//saltar correo
 				$texto.=fgets($myfile);//guardar fecha
 				$texto.=((int)fgets($myfile)+1)."\n";//saltar partidas jugadas
@@ -28,18 +26,29 @@ session_start();
 				$texto.=fgets($myfile);//saltar linea (separador)
 				$linea=$linea+7;//guarda la line desde donde empieza el usuario
 			}
-			
 		}
 		fclose($myfile);
 		file_put_contents("Usuarios.txt", $texto);
-		
+
+		//BUSCAR PALABRA
 		$myfile = fopen("Palabras.txt", "r") or die("Unable to open file!");
-		//FFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+		$random=rand(0,6);
+		$inicio=0;
+		while($inicio!=$random){
+			if (fgetc($myfile)==',')
+				$inicio+=1;
+		}
+		$palabraelegida="";
+		$character=fgetc($myfile);
+		while ($character!=","){
+			$palabraelegida.=$character;
+			$character=fgetc($myfile);
+		}
 
-
-		$palabraelegida="abcde";
-		$palabrablank="_____";
-
+		$palabrablank="";
+		$max=strlen($palabraelegida);
+		for ($i=0;$i<$max;$i++)
+		$palabrablank.='_';
 
 		$_SESSION["PALABRA"]=$palabraelegida;
 		$_SESSION["BLANK"]=$palabrablank;
@@ -71,8 +80,7 @@ session_start();
 								echo fgets($myfile); //7 lineas del dibujo
 							fclose($myfile);
 						}else{
-							$pos = strrpos($_SESSION["PALABRA"], $_POST["Letra"]);
-
+							$pos = strrpos($_SESSION["PALABRA"], $_POST["Letra"]);//COMPROBAR LETRA INTRODUCIDA
 							if ($pos === false)
 								$_POST["Vida"]=((int)$_POST["Vida"]-1);
 							else{
@@ -102,7 +110,7 @@ session_start();
 					if ($_SESSION["PALABRA"]==$_SESSION["BLANK"]){
 						echo '<br><br><label class="datos" >HAS GANADO</label>';
 						$myfile = fopen("Usuarios.txt", "r") or die("Unable to open file!");
-						$texto="";
+						$texto="";//SI HAS GANADO LO GUARDA COMO PARTIDA GANADA
 						$texto.=fgets($myfile);//saltar primer separador
 						while(!feof($myfile)){
 							$nombre=fgets($myfile);//conseguir nombre
