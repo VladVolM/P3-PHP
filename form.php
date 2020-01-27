@@ -5,8 +5,27 @@
 						if(filter_var($_POST["Correo"],FILTER_VALIDATE_EMAIL))
 							if (strlen($_POST["Fecha"])>=1){
 								$Contenido= "----------------------------------------\n".$_POST["Nombre"]."\n".$_POST["Apellidos"]."\n".$_POST["Correo"]."\n".$_POST["Fecha"]."\n0\n0\n";
-								file_put_contents("Usuarios.txt", $Contenido,FILE_APPEND);
-								header('Location: inicio.php');
+								$myfile = fopen("Usuarios.txt", "r") or die("Unable to open file!");
+
+								$buscando=true
+								fgets($myfile);//saltar primer separador
+								while(!feof($myfile) && $buscando){
+									$nombre=fgets($myfile);//conseguir nombre
+									if ($_GET["nom"]== trim($nombre))
+										$buscando=false;
+									fgets($myfile);//conseguir apppelidos
+									fgets($myfile);//saltar correo
+									fgets($myfile);//guardar fecha
+									fgets($myfile);//saltar partidas jugadas
+									fgets($myfile);//saltar partidas ganadas
+									fgets($myfile);//saltar linea (separador)
+									
+								}
+								fclose($myfile);
+								if ($buscando){
+									file_put_contents("Usuarios.txt", $Contenido,FILE_APPEND);
+									header('Location: inicio.php');
+								}else echo 'TAL NOMBRE YA SE USA';
 							}
 			}
 ?>
