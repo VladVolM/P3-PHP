@@ -105,7 +105,11 @@ session_start();
 						}
 					?>
 				</label>
-				<br><label id="palabra"class="datos"><?php echo $_SESSION["BLANK"];?></label>
+				<br><label id="palabra"class="datos"><?php
+														$max=strlen($_SESSION["PALABRA"]);
+														for ($i=0;$i<$max;$i++)
+ 															echo $_SESSION["BLANK"][$i].' ';
+													?></label>
 				<?php
 					if ($_SESSION["PALABRA"]==$_SESSION["BLANK"]){
 						echo '<br><br><label class="datos" >HAS GANADO</label>';
