@@ -6,7 +6,6 @@
         <title id="title">Inicio</title>
         <link rel="stylesheet" href="Style/styles.css" />
         <link rel="Shortcut Icon" href="Imagenes/icono.png">
-        <script type="text/javascript" src="Scripts/javaInicio.js"></script>
     </head>
     <body>
 		<section>

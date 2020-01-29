@@ -7,7 +7,7 @@
 								$Contenido= "----------------------------------------\n".$_POST["Nombre"]."\n".$_POST["Apellidos"]."\n".$_POST["Correo"]."\n".$_POST["Fecha"]."\n0\n0\n";
 								$myfile = fopen("Usuarios.txt", "r") or die("Unable to open file!");
 
-								$buscando=true
+								$buscando=true;
 								fgets($myfile);//saltar primer separador
 								while(!feof($myfile) && $buscando){
 									$nombre=fgets($myfile);//conseguir nombre

@@ -3,10 +3,9 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title id="title">Inicio</title>
+        <title id="title">Puntuación</title>
         <link rel="stylesheet" href="Style/styles.css" />
         <link rel="Shortcut Icon" href="Imagenes/icono.png">
-        <script type="text/javascript" src="Scripts/javaInicio.js"></script>
     </head>
     <body>
 		<section>
@@ -35,12 +34,12 @@
 									$partidasjugadas=fgets($myfile);//guardar partidas jugadas
 									echo 'Partidas jugadas: '.$partidasjugadas;//partidas jugadas
 
-									echo '</li><li>';
+									echo '</li><li class="gana">';
 
 									$partidasganadas=fgets($myfile);//guardar partidas ganadas
 									echo 'Partidas ganadas: '.$partidasganadas;//partidas ganadas
 
-									echo '</li><li>';
+									echo '</li><li class="pierde">';
 
 									echo 'Partidas perdidas: '.((int)$partidasjugadas-(int)$partidasganadas);//partidas perdidas
 							
