@@ -34,19 +34,19 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title id="title">Inicio</title>
+        <title id="title">Creación de usuario</title>
         <link rel="stylesheet" href="Style/styles.css" />
         <link rel="Shortcut Icon" href="Imagenes/icono.png">
         <script type="text/javascript" src="Scripts/javaInicio.js"></script>
     </head>
     <body>
 		<section>
-			<a href="inicio.php">Volver al inicio</a>
+			<a class="button" href="inicio.php">Volver al inicio</a>
 		</section>
 		<form id='alta' method="post" onsubmit="return true;">
 			<fieldset>
 				<legend>CREAR USUARIO</legend>
-				<label class="datos" for="Nombre">Nombre:</label><input type="text" name="Nombre" placeholder="Nombre"> 
+				<label class="datos" for="Nombre">Nombre:&nbsp&nbsp</label><input type="text" name="Nombre" placeholder="Nombre"> 
 				<?php 
 					if (isset($_POST["Nombre"]))
 						if (strlen($_POST["Nombre"])<1)
@@ -64,7 +64,7 @@
 							if (strlen($_POST["Apellidos"])<2)
 								echo '*Mínimo 2 letras';
 				?>
-				</br><label class="datos" for="Correo">E-Mail:</label><input type="text" name="Correo" placeholder="E-Mail"> 
+				</br><label class="datos" for="Correo">E-Mail:&nbsp&nbsp&nbsp&nbsp</label><input type="text" name="Correo" placeholder="E-Mail"> 
 				<?php 
 					if (isset($_POST["Correo"]))
 						if (strlen($_POST["Correo"])<1)
@@ -73,7 +73,7 @@
 							if(!filter_var($_POST["Correo"],FILTER_VALIDATE_EMAIL))
 								echo '*No es un E-mail';
 				?>
-				</br><label class="datos" for="Fecha">Nombre:</label><input type="date" min='1800-01-01' <?php echo 'max='.date('Y-m-d');?> name="Fecha"> 
+				</br><label class="datos" for="Fecha">Fecha:&nbsp&nbsp&nbsp&nbsp&nbsp</label><input type="date" min='1800-01-01' <?php echo 'max='.date('Y-m-d');?> name="Fecha"> 
 				<?php 
 					if (isset($_POST["Fecha"]))
 						if (strlen($_POST["Fecha"])<1)

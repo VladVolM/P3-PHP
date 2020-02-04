@@ -9,7 +9,7 @@
     </head>
     <body>
 		<section>
-			<a href="inicio.php">Volver</a>
+			<a class="button" href="inicio.php">Volver</a>
 		</section>
 		<section>
 			<ul>

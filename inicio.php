@@ -9,7 +9,7 @@
     </head>
     <body>
 		<section>
-			<a href="form.php">Registrarse como jugador</a>
+			<a class="button" href="form.php">Registrarse como jugador</a>
 		</section>
 		<section>
 			<ul>
@@ -60,7 +60,7 @@
 			</ul>
         </section>
 		<section>
-			<a href="score.php">Puntos</a>
+			<a class="button" href="score.php">Puntos</a>
 		</section>
     </body>
 </html>

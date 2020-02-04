@@ -66,7 +66,7 @@ session_start();
     </head>
     <body>
 		<section>
-			<a href="inicio.php">Salir</a>
+			<a class="button" href="inicio.php">Salir</a>
 		</section>
 		<form id='juego' method="post" onsubmit="return true;">
 			<fieldset>

@@ -1,6 +1,16 @@
 .hide {
 	display:none;
 }
+html{
+	background-image: linear-gradient(to right ,rgba(214, 189, 197, 1), rgba(235, 110, 110, 1));
+}
+
+.button{
+	border-radius: 8px;
+	background: rgb(255, 255, 255);
+	padding:2px;
+	margin:2px;
+}
 
 /*INICIO*/
 .USUARIO a:link{color:yellow}
