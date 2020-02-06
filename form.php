@@ -23,7 +23,7 @@
 								}
 								fclose($myfile);
 								if ($buscando){
-									file_put_contents("Usuarios.txt", $Contenido,FILE_APPEND);
+									file_put_contents("Usuarios.txt", htmlspecialchars($Contenido),FILE_APPEND);
 									header('Location: inicio.php');
 								}else echo 'TAL NOMBRE YA SE USA';
 							}
